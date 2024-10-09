@@ -1,0 +1,150 @@
+{
+    // "layer": "top", // Waybar at top layer
+    // "position": "bottom", // Waybar position (top|bottom|left|right)
+    "height": 24, // Waybar height (to be removed for auto height)
+    // "width": 1280, // Waybar width
+    "spacing": 5, // Gaps between modules (4px)
+    // Choose the order of the modules
+    "modules-left": ["hyprland/workspaces", "hyprland/scratchpad", "hyprland/window"],
+    "modules-center": ["mpris","custom/waylrc"],
+    "modules-right": ["custom/waylrc","custom/pacman","temperature", "cpu", "memory", "pulseaudio", "backlight", "keyboard-state", "battery", "tray", "clock"],
+    
+
+    "hyprland/mode": {
+        "format": "<span style=\"italic\">{}</span>"
+    },
+
+    "hyprland/scratchpad": {
+        "format": "{icon} {count}",
+        "show-empty": false,
+        "format-icons": ["", ""],
+        "tooltip": true,
+        "tooltip-format": "{app}: {title}"
+    },
+
+    "tray": {
+        "icon-size": 15,
+        "spacing": 10
+    },
+
+    "clock": {
+        "timezone": "Europe/London",
+        "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
+        "format-alt": "{:%Y-%m-%d}"
+    },
+
+    "cpu": {
+        "format": " {usage}%",
+    },
+
+    "memory": {
+        "format": " {}%"
+    },
+
+    "temperature": {
+        "hwmon-path": "/sys/devices/platform/coretemp.0/hwmon/hwmon6/temp1_input",
+        "critical-threshold": 80,
+        "format-critical": "{temperatureC}°C",
+        "format": "{temperatureC}°C",
+    },
+
+    "backlight": {
+        "format": "{icon} {percent}%",
+        "format-icons": ["", "", "", "", "", "", "", "", ""]
+    },
+    "battery": {
+        "states": {
+            "warning": 30,
+            "critical": 15
+        },
+        "format-charging": " {capacity}%",
+        "format-plugged": " {capacity}%",
+        "format-alt": "{icon} {time}",
+        "format-icons": ["", "", "", "", ""]
+    },
+    "network": {
+        // "interface": "wlp2*", // (Optional) To force the use of this interface
+        "format-wifi": "{essid}",
+        "format-ethernet": " {ifname}",
+        "tooltip-format": " {ifname} via {gwaddr}",
+        "format-linked": " {ifname} (No IP)",
+        "format-disconnected": "Disconnected ⚠ {ifname}",
+        "format-alt": " {ifname}: {ipaddr}/{cidr}"
+    },
+    "pulseaudio": {
+        "format": "{icon} {volume}% {format_source}",
+        "format-bluetooth": " {icon} {volume}% {format_source}",
+        "format-bluetooth-muted": "  {icon} {format_source}",
+        "format-muted": "  {format_source}",
+        "format-source": " {volume}%",
+        "format-source-muted": "",
+        "format-icons": {
+            "default": ["", "", ""]
+        },
+        "on-click": "pavucontrol"
+    },
+	"mpris": {
+		"format": "{player_icon} <b>'{title}' ~ {artist}</b>     ",
+		"format-paused": "{status_icon} '{title}' ~ {artist}     ",
+		"tooltip-format": "playing:  '{title}' by {artist} on {album} [{player}]",
+		"tooltip-format-paused": "paused:  '{title}' by {artist} on {album} [{player}]",
+		"player-icons": {
+			"default": ">",
+			"mpv": ">"
+		},
+		"status-icons": {
+			"paused": "||"
+		},
+	 	"ignored-players": ["firefox"]
+	},	
+
+
+    "custom/pacman": {
+        "format": "{icon}{}",
+        "return-type": "json",
+        "format-icons": {
+            "pending-updates": " ",
+            "updated": ""
+        },
+        "exec-if": "which waybar-updates",
+        "exec": "waybar-updates"
+    },
+    "custom/waylrc": {
+        "exec": "~/.local/bin/waylrc",
+        "return-type": "json",
+        "escape": true
+    },
+    
+
+    "hyprland/window": {
+    "format": "{initialTitle}",
+    "rewrite": {
+	"Steam": "steam",
+	"Mozilla Firefox": "firefox",
+        "kitty": "terminal",
+        "rhythmbox": "music player",
+	"Discord": "discord",
+	"search:3": "app menu",
+	"Virtual Machine Manager": "vm",
+	"(.*) - OSD Lyrics": "lyrics",
+	"OSD Lyrics": "lyrics",
+	"Prism Launcher (.*)": "mc launcher",
+	"Audacity": "audacity",
+	"Calculator": "calc",
+	"(.*)Thunar": "thunar",
+	"balenaEtcher": "usb writer",
+	"Kate": "kate",
+	"(.*)Discord(.*)": "discord",
+	"Microsoft Teams - Preview": "teams",
+	"qBittorrent(.*)": "qbittorrent",
+	"org.pulseaudio.pavucontrol": "volume control",
+	"Volume Control": "volume control",
+	"Bluetooth Devices": "bluetooth control",
+	"Picture-in-Picture": "pip",
+	"Network Connections": "wifi control",
+	"Celeste": "celeste :3"
+    },
+    }
+}
+	
+}
